@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var image = UIImage(named: "GILUkg")!
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            ProfileView()
         }
         .padding()
     }
@@ -22,4 +18,21 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+
+struct ProfileView: View {
+    @State private var userImage: UIImage? = UIImage(named: "default-avatar")
+
+    var body: some View {
+        VStack {
+            if let image = userImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            }
+            Text("John Doe")
+                .font(.title)
+        }
+    }
 }
